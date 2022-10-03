@@ -1,8 +1,3 @@
-/*
-
-Return the keys and values of the following object
-
-*/
 
 let capitalCities = {
   scotland: 'Edinburgh',
@@ -18,14 +13,11 @@ let highScores = {
   34: ['Sergi', 'Frank',]
 };
 
-// ONLY EDIT BELOW HERE
+let capitalCitiesKeys = Object.keys(capitalCities) ;
+let highScoresKeys = Object.keys(highScores);
+let capitalCitiesValues = Object.values(capitalCities);
+let highScoresValues = Object.values(highScores);
 
-let capitalCitiesKeys = ;
-let highScoresKeys = ;
-let capitalCitiesValues = ;
-let highScoresValues = ;
-
-// ONLY EDIT ABOVE HERE
 
 console.log(capitalCitiesKeys);
 // prints [ 'scotland', 'kenya', 'australia', 'canada' ]

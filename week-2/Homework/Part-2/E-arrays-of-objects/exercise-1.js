@@ -1,8 +1,3 @@
-/*
-1) Define an array containing the 3 persons defined below.
-2) Return an array of the person names (hint: use map).
-3) Filter the persons to return an array with the person younger than 28 years old (hint: use filter).
-*/
 
 let person1 = {
     name: "Alice",
@@ -19,23 +14,18 @@ let person3 = {
     age: 20
 };
 
-/*
-DO NOT EDIT ANYTHING ABOVE THIS LINE
-WRITE YOUR CODE BELOW
-*/
+getName=(person)=>{
+  return (person.name);
+}
 
+getAge=(person)=>{
+  return(person.age<28);
+}
 
-let persons = // Complete here
-
-let personNames = // Complete here
-
-let personsYoungerThan28YearsOld = // Complete here
-
-
-/*
-DO NOT EDIT ANYTHING BELOW THIS LINE
-*/
-
+let persons = [person1, person2, person3];
+let personNames = persons.map(getName);
+let personsYoungerThan28YearsOld = persons.filter(getAge);
+ 
 console.log("Question 1: array defined with 3 persons -> ",
     (persons[0] === person1 && persons[1] === person2 && persons[2] === person3) ? 'Passed :)' : 'Not yet :(');
 

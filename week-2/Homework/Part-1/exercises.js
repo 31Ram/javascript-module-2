@@ -1,80 +1,58 @@
-/**
- *
- * For each of the names in the array passed into this function
- *
- * - Add a <h1> tag to the website containing the name of the person
- * - Add a <h2> tag to the website containing the job of the person
- *
- * All of your HTML should go inside the Div tag with the id "content".
- *
- * <div id="content">
- *      <h1>{Name Here}</h1>
- *      <h2>{Job Here}</h2>
- *      .....
- * </div>
- */
+
 function exerciseOne(arrayOfPeople) {
-  let content = document.querySelector("#content");
+  arrayOfPeople.forEach((person) => {
+    let _h1 = document.createElement("h1");
+    let _h2 = document.createElement("h2");
+
+    _h1.textContent = person.name;
+    _h2.textContent = person.job;
+
+    const content = document.getElementById("content");
+    content.appendChild(_h1);
+    content.appendChild(_h2);
+  });
 }
 
-/**
- *
- * Create a list of shopping items. You should use an unordered list.
- *
- * All of your HTML should go inside the Div tag with the id "content".
- *
- */
 function exerciseTwo(shopping) {
-  //Write your code in here
+  shopping.forEach((item) => {
+    let _li = document.createElement("li");
+    _li.textContent = item;
+
+    let content = document.getElementById("content");
+    content.appendChild(_li);
+  });
 }
 
-/**
-    I'd like to display my three favorite books inside a nice webpage!
-
-    const books = [
-        {
-            title: "The Design of Everyday Things",
-            author: "Don Norman",
-            alreadyRead: false
-        },
-        {
-            title: "The Most Human Human",
-            author: "Brian Christian",
-            alreadyRead: true
-        },
-        {
-            title: "The Pragmatic Programmer",
-            author: "Andrew Hunt",
-            alreadyRead: true
-        }
-    ];
-
-    Iterate through the array of books.
-    - For each book, create a <p> element with the book title and author and append it to the page.
-    - Use a <ul> and <li> to display the books.
-    - Add an <img> to each book that links to a URL of the book cover.
-    - Change the style of the book depending on whether you have read it (green) or not (red).
-
-    The end result should look something like this: https://hyf-js2-week1-makeme-ex1-demo.herokuapp.com/
-**/
 function exerciseThree(books) {
-  //Write your code in here
-}
+  let content = document.getElementById("content");
+  let _ul = document.createElement("ul");
 
-//
-//
-//
-//
-// DO NOT EDIT BELOW HERE
-//
-//
-//
-//
+  books.forEach((book) => {
+    let _li = document.createElement("li");
+    let _p = document.createElement("p");
+
+    _p.textContent = `${book.title} - ${book.author}`;
+    let _img = document.createElement("img");
+    _img.setAttribute('src', book.portada);
+
+    _li.appendChild(_p);
+    _li.appendChild(_img);
+    _ul.appendChild(_li);
+
+    if (book.alreadyRead) {
+      _li.style.backgroundColor = "green";
+    } else {
+      _li.style.backgroundColor = "red";
+    }
+  });
+
+  content.appendChild(_ul);
+}
 
 let people = [
   { name: "Chris", job: "Teacher" },
   { name: "Joanna", job: "Student" },
-  { name: "Boris", job: "Prime Minister" }
+  { name: "Boris", job: "Prime Minister" },
 ];
 
 exerciseOne(people);
@@ -87,18 +65,21 @@ const books = [
   {
     title: "The Design of Everyday Things",
     author: "Don Norman",
+    portada: "https://i.postimg.cc/y6yQmckY/The-Design-of-Everyday-Things.jpg",
     alreadyRead: false
   },
   {
     title: "The Most Human Human",
     author: "Brian Christian",
-    alreadyRead: true
+    portada: "https://i.postimg.cc/26QDFyZR/The-Most-Human-Human.jpg",
+    alreadyRead: true,
   },
   {
     title: "The Pragmatic Programmer",
     author: "Andrew Hunt",
-    alreadyRead: true
-  }
+    portada: "https://i.postimg.cc/FzYxXdgw/The-Pragmatic-Programmer.jpg",
+    alreadyRead: true,
+  },
 ];
 
 exerciseThree(books);
