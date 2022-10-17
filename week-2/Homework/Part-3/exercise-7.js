@@ -27,39 +27,59 @@ In addition will substract 1 in the product stock of bought products
 6. If there is not enough stock, the product cannot be added to the shopping cart
 */
 
-var products = [];
+let products = [];
 
-var product1 = {
+let product1 = {
   id: 1,
   name: "Toaster X56 Plus",
   price: 12.98,
   stock: 105
 };
-var product2 = {
+let product2 = {
   id: 2,
   name: "Watch Rocker",
   price: 9.99,
   stock: 2
 };
+let product3 = {
+  id: 3,
+  name: "Dell Precision 7760 71m30r",
+  price: 4.015,
+  stock: 20
+};
+let product4 = {
+  id: 4,
+  name: "Sony PlayStation 5",
+  price: 799.00,
+  stock: 46
+};
 
 products.push(product1);
 products.push(product2);
+products.push(product3);
+products.push(product4);
 
-var shoppingCart = {
+let shoppingCart = {
   totalPrice: 0,
   selectedProducts: []
 };
 
 function addToShoppingCart(id){
-
+  let product = products.find((product)=>product.id===id);
+  shoppingCart.selectedProducts.push(product)
+  shoppingCart.totalPrice += product.price;
 }
 
 function removeFromShoppingCart(id){
-
+  let idPosition = products.findIndex((product)=>product.id===id);
+  if(idPosition!=-1){
+      shoppingCart.selectedProducts.splice(idPosition, 1);
+      shoppingCart.totalPrice -= products[idPosition].price;
+    }
 }
 
 function shop(){
-
+ // shoppingCart.selectedProducts.forEach((product)=>product.pop());
 }
 
 //results
