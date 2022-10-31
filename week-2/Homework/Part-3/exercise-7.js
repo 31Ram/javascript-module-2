@@ -79,32 +79,48 @@ function removeFromShoppingCart(id){
 }
 
 function shop(){
- // shoppingCart.selectedProducts.forEach((product)=>product.pop());
+  shoppingCart.selectedProducts.forEach((selectedProduct)=>{
+    products.forEach((product)=>{
+      if(product.id===selectedProduct.id){
+        product.stock-=1;
+      }
+    })
+  })
+
+  shoppingCart.selectedProducts= [];
+  shoppingCart.totalPrice = 0;
 }
 
 //results
 addToShoppingCart(1);
-console.log("Step 1");
+console.log("\nStep 1");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name)+'\n');
+
 addToShoppingCart(2);
 console.log("Step 2");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name)+'\n');
+
 addToShoppingCart(4);
 console.log("Step 3");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name)+'\n');
+
+
 removeFromShoppingCart(2);
 console.log("Step 4");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name)+'\n');
+
 shop();
 console.log("Step 5");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name)+'\n');
+
+products.forEach((element)=> console.log(`Product: ${element.name} Stock: ${element.stock}\n`))

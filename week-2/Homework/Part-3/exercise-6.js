@@ -91,6 +91,8 @@ let mentors = [
 
 ];
 
+// Punto 1:
+console.log("\nPunto 1:\nMentors that are in Barcelona and one of the skills is React\n");
 mentors.forEach((mentor)=>{
   if(mentor.job.city==='Barcelona' && mentor.skills.find((skill)=>skill==='React')){
     console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Barcelona and i know React.`);
@@ -98,6 +100,7 @@ mentors.forEach((mentor)=>{
 })
 
 // punto 2:
+console.log("\nPunto 2:\nTo those that work in Barcelona, Add a new skill to the list\n");
 mentors.filter((mentor)=>{
   if(mentor.job.city==='Barcelona' && mentor.skills.find((skill)=>skill==='React')){
     mentor.class = 'Jun1';
@@ -116,6 +119,7 @@ mentors.forEach((mentor)=>{
 });
 
 // Punto 4:
+console.log("\nPunto 4:\n Create a function to add a skill to all members in a list of mentors\n");
 function addSkill(mentors, newSkill){
   mentors.forEach((mentor)=>mentor.addSkill(newSkill))
 }
@@ -124,6 +128,7 @@ function addSkill(mentors, newSkill){
  mentors.forEach(mentor=>console.log(mentor.skills))
 
 // Punto 5:
+console.log("\nPunto 5:\nCreate a function to remove a skill to all members in a list of mentors\n");
 function removeSkill(mentors, skill){
   mentors.forEach((mentor)=>{
     let skillPosition = mentor.skills.findIndex((mentorSkill)=>mentorSkill===skill)
@@ -137,6 +142,7 @@ function removeSkill(mentors, skill){
  mentors.forEach(mentor=>console.log(mentor.skills))
 
 // Punto 6:
+console.log("\nPunto 6:\nmentorWithMoreSkills() Returns the name of the mentor with more number of skills\n");
 function mentorWithMoreSkills(mentors){
   let cantSkill = 0;
   let indexMentor = 0;
@@ -154,6 +160,7 @@ function mentorWithMoreSkills(mentors){
 console.log(mentorWithMoreSkills(mentors));
 
 // Punto 7:
+console.log("\nPunto 7:\n.addStudentLikes() that increments by one the attribute studentLikes\n");
 mentors.forEach((mentor)=>{
   mentor.addStudentLikes = function (){
     this.studentLikes += 1;
@@ -161,10 +168,13 @@ mentors.forEach((mentor)=>{
 })
 
 // Punto 8:
+console.log("\nPunto 8:\nfunction that adds a student like to all mentors in the array\n");
 function addStudentLikes(mentors){
   mentors.forEach((mentor)=>mentor.addStudentLikes());
 }
 
 // Prueba punto 8:
+addStudentLikes(mentors);
+addStudentLikes(mentors);
 addStudentLikes(mentors);
 mentors.forEach(mentor=>console.log(mentor))
