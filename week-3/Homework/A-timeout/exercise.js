@@ -10,7 +10,12 @@ Update your code to make the colour change every 5 seconds to something differen
 ================
 */
 
-//console.log(window.localStorage.getItem("name")); 
-console.log(window.localStorage.setTimeout(() => {
-    localStorage
-}, timeout), 5000); 
+function getRandomInt() {
+  return (Math.floor(Math.random() * 255));
+}
+
+// Punto 1:
+setTimeout(() =>{ document.getElementById('main').style.background = `orange`}, 2000);
+
+// Punto 2:
+setInterval(()=>{ document.body.style.backgroundColor = `rgb(${getRandomInt()}, ${getRandomInt()}, ${getRandomInt()})`}, 1000);

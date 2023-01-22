@@ -11,6 +11,11 @@
   <style>
     body {
       padding: 30px;
+        }
+
+    .input, .button{
+      display: block;
+      margin: 12px;
     }
   </style>
 </head>
@@ -20,7 +25,20 @@
     <div class="jumbotron">
       <h1>My movies</h1>
       <div id="all-movies">
-        <p class="alert alert-info">Number of movies: <span id="movies-number"></span></p>
+        <p class="alert alert-info">Number of movies: <span id="movies-number"></span></p> 
+      </div>
+      <div>
+        <h1>Add new movie</h1>
+        <form id="form">
+          <input class="input" type="text" name="title" placeholder="Title">
+          <input class="input" type="text" name="director" placeholder="Director">
+          <input class="input" type="text" name="type" placeholder="type">
+        
+          <input style="margin-left: 20px ;" type="checkbox" name="checkBox">
+          <p style="display: inline;">have you watched it?</p>
+        
+          <button class="button" type="submit">Submit</button>
+        </form>
       </div>
     </div>
     <script src="exercise.js"></script>

@@ -31,7 +31,7 @@ TIP: Use the functions you created on tasks 1-3
 
 ================
 */
-var movies = [
+const movies = [
   {
     title: "Color Out of Space",
     director: "Richard Stanley",
@@ -58,10 +58,60 @@ var movies = [
   },
 ];
 
-// create showMovies function
+// Task 1: showMovies function
+const showMovies =(movies)=>{
+  const allMovies = document.getElementById("all-movies");
+  allMovies.innerHTML = `<p class="alert alert-info">Number of movies: <span id="movies-number"></span></p>`;
+ 
+  movies.forEach((movie, index)=>{ 
+    setTimeout(()=>{ 
+      const _p = document.createElement("p");
+      _p.textContent = `Pelicula: ${movie.title}, Director: ${movie.director}`;
+      _p.classList = 'movie';
+      allMovies.appendChild(_p);
 
+      const moviesNumber = document.getElementById('movies-number');
+      moviesNumber.textContent = index+1;
+    }, 500*(index+1));
+  });
+}
 
-// create a new movie object for your favorite movie
+// Task 2: create a new movie object for your favorite movie
+const newMovie=(title, director, type, haveWatched)=>{
+  const myMoviefavorite = {
+    title: title,
+    director: director,
+    type: type,
+    haveWatched: haveWatched,
+  }
+  return (myMoviefavorite);
+}
 
+// Task 2: create addMovies function
+const addMovie=(movie)=>{
+ // document.querySelectorAll('p.movie').forEach((p)=>{p.remove()});
+  setTimeout(()=>{ 
+    movies.push(movie)
+    showMovies(movies);
+  }, 2000); 
+}
 
-// create addMovies function
+// Task 3:
+addMovie(newMovie('ghost in the shell', 'Masamune Shirow','Ciberpunk', true));
+
+// Task 4:
+const sendForm = (event) => {
+  event.preventDefault();
+  const {title, director, type, checkBox} = event.target;
+
+  if(title.value.length>0 && director.value.length>0 && type.value.length>0){ 
+    const data = newMovie(title.value, director.value, type.value, checkBox.checked);
+    title.value ='';
+    director.value ='';
+    type.value ='';
+    addMovie(data);
+  }
+}
+
+const form = document.getElementById('form');
+form.addEventListener("submit", sendForm);
